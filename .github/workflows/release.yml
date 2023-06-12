@@ -75,7 +75,7 @@ jobs:
 
     - name: Install SpiderHeck assemblies
       run: |
-        dotnet lib/DepotDownloader/DepotDownloader.dll -app 1329500 -depot 1329501 -manifest 7453118592264273764 -os windows -osarch 64 -username ${{ secrets.STEAM_USERNAME }} -password ${{ secrets.STEAM_PASSWORD }} -filelist game_assemblies.txt -dir SpiderHeck
+        dotnet lib/DepotDownloader/DepotDownloader.dll -app 1329500 -depot 1329501 -os windows -osarch 64 -username ${{ secrets.STEAM_USERNAME }} -password ${{ secrets.STEAM_PASSWORD }} -filelist game_assemblies.txt -dir SpiderHeck
         mkdir -p ModManager/lib
         mv SpiderHeck/SpiderHeckApp_Data/Managed/* ModManager/lib
 

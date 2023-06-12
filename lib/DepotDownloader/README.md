@@ -1,3 +1,3 @@
 # DepotDownloader
-Manual build of https://github.com/SteamRE/DepotDownloader/tree/auth/accesstoken (d73462e077f6e7ba1251734577a3cb11d6581a0b).
+Manual build of https://github.com/SteamRE/DepotDownloader/tree/master (0122f0f63fc5124284e406fc7ad0846271191ee3).
 Necessary until 2FA and manifest bug fixes have been included in a release.
