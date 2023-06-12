@@ -1,4 +1,4 @@
-# Bump project version numbers, build ModManager.dll, and draft a release with notes from CHANGELOG.md
+# Bump project version numbers, build ModManager.dll, draft a release with notes from CHANGELOG.md, and publish to NuGet
 name: Draft Release
 run-name: Draft Release (${{ inputs.bump_size }})
 
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       bump_size:
-        description: "Amount to bump version by"
+        description: Amount to bump version by
         required: true
         type: choice
         options:
@@ -28,9 +28,9 @@ jobs:
       with:
         file: ModManager/ModManager.csproj
         version: |
-          $${{ inputs.bump_size == 'major' && '^.0.0'
-            || inputs.bump_size == 'minor' && '?.^.0'
-            || inputs.bump_size == 'patch' && '?.?.^' }}
+          ${{ inputs.bump_size == 'major' && '^.0.0'
+           || inputs.bump_size == 'minor' && '?.^.0'
+           || inputs.bump_size == 'patch' && '?.?.^' }}
 
     - name: Bump Metadata.cs
       run: sed -i "s/${{ steps.bump_project.outputs.oldVersion }}/${{ steps.bump_project.outputs.newVersion }}/" ModManager/Metadata.cs
@@ -99,6 +99,13 @@ jobs:
       with:
         ref: main # Override workflow SHA, so checkout includes bump commit
 
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v3
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      with:
+        dotnet-version: 7.x
+
     - name: Extract release notes
       id: extract_release_notes
       uses: ffurrer2/extract-release-notes@v1
@@ -122,3 +129,8 @@ jobs:
         artifacts: artifacts/ModManager.zip
         artifactErrorsFailBuild: true
         draft: true
+
+    - name: Pack and push to NuGet
+      run: |
+        dotnet pack -c Release -p:PackageReleaseNotes="${{ steps.extract_release_notes.outputs.release_notes }}" -o artifacts
+        dotnet nuget push artifacts/com.senyksia.spiderheck.modmanager.${{ needs.bump.outputs.new_version }}.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
