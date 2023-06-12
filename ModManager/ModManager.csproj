@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup >
+  <PropertyGroup>
     <RootNamespace>ModManager</RootNamespace>
-    <AssemblyName>ModManager</AssemblyName>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>10</LangVersion>
-    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
     <RestoreAdditionalProjectSources>
       https://nuget.bepinex.dev/v3/index.json;
     </RestoreAdditionalProjectSources>
+
+    <PackageId>com.senyksia.spiderheck.modmanager</PackageId>
+    <AssemblyName>ModManager</AssemblyName>
+    <Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,7 +28,7 @@
     <PackageReference Include="UnityEngine" Version="*" ExcludeAssets="all" /> <!-- Hack to prevent consuming BepInEx.Unity's UnityEngine dependency -->
   </ItemGroup>
 
-  <Target Name="Copy" AfterTargets="Build" Condition="'$(GameFolder)' != '' And '$(GameFolder)' != 'path\to\SpiderHeck'">
+  <Target Name="CopyToPluginsFolder" AfterTargets="Build" Condition="'$(GameFolder)' != '' And '$(GameFolder)' != 'path\to\SpiderHeck'">
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GameFolder)\BepInEx\plugins\" UseSymboliclinksIfPossible="true" />
   </Target>
 </Project>
