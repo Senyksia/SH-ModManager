@@ -72,8 +72,8 @@ using ModManager.UI;
 
 namespace HugeSpiders
 {
-    [BepInDependency("com.senyksia.spiderheck.modmanager")]
-    [BepInPlugin("com.senyksia.spiderheck.hugespiders", "HugeSpiders", "1.0.0")]
+    [BepInDependency("senyksia.spiderheck.modmanager")]
+    [BepInPlugin("senyksia.spiderheck.hugespiders", "HugeSpiders", "1.0.0")]
     [BepInProcess("SpiderHeckApp.exe")]
     internal class HugeSpiders : BaseUnityPlugin
     {

@@ -3,13 +3,18 @@
     <RootNamespace>ModManager</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>10</LangVersion>
-    <RestoreAdditionalProjectSources>
-      https://nuget.bepinex.dev/v3/index.json;
-    </RestoreAdditionalProjectSources>
 
-    <PackageId>com.senyksia.spiderheck.modmanager</PackageId>
+    <PackageId>senyksia.spiderheck.modmanager</PackageId>
     <AssemblyName>ModManager</AssemblyName>
     <Version>0.1.0</Version>
+    <Authors>Senyksia</Authors>
+    <Description>In-game settings API for the game SpiderHeck.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <Copyright>Copyright (c) Senyksia 2023</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/Senyksia/SH-ModManager</RepositoryUrl>
+    <PackageTags>spiderheck bepinex plugin mod manager settings api</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

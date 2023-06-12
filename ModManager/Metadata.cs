@@ -8,7 +8,7 @@ namespace ModManager
         /// <summary>
         /// ModManager GUID, using reverse domain name notation.
         /// </summary>
-        public const string PLUGIN_ID      = "com.senyksia.spiderheck.modmanager";
+        public const string PLUGIN_ID      = "senyksia.spiderheck.modmanager";
 
         /// <summary>
         /// Human-readable name for logging, etc.
