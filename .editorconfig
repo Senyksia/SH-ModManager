@@ -9,5 +9,5 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 # XML project files
-[*.csproj]
+[*.{csproj,csproj.user}]
 indent_size = 2

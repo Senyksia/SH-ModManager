@@ -133,4 +133,4 @@ jobs:
     - name: Pack and push to NuGet
       run: |
         dotnet pack -c Release -p:PackageReleaseNotes="${{ steps.extract_release_notes.outputs.release_notes }}" -o artifacts
-        dotnet nuget push artifacts/senyksia.spiderheck.modmanager.${{ needs.bump.outputs.new_version }}.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
+        dotnet nuget push artifacts/Senyksia.SpiderHeck.ModManager.${{ needs.bump.outputs.new_version }}.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}

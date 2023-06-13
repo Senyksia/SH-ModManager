@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>10</LangVersion>
 
-    <PackageId>senyksia.spiderheck.modmanager</PackageId>
+    <PackageId>Senyksia.SpiderHeck.ModManager</PackageId>
     <AssemblyName>ModManager</AssemblyName>
     <Version>0.1.0</Version>
     <Authors>Senyksia</Authors>
@@ -14,8 +14,12 @@
     <Copyright>Copyright (c) Senyksia 2023</Copyright>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/Senyksia/SH-ModManager</RepositoryUrl>
-    <PackageTags>spiderheck bepinex plugin mod manager settings api</PackageTags>
+    <PackageTags>SpiderHeck BepInEx Plugin Mod Manager Settings API</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="MyScriptAssembly" />

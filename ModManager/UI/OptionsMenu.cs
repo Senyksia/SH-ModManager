@@ -12,17 +12,6 @@ namespace ModManager.UI
     /// <summary>
     /// A menu to bind settings to UI elements, and automatically update their config file.
     /// </summary>
-    /// <example>
-    /// <para>
-    /// Creating a basic options menu:
-    /// <code>
-    /// ConfigEntry{bool} playSounds = Config.Bind("General", "PlaySounds", true);
-    ///
-    /// OptionsMenu optionsMenu = new OptionsMenu("Super Strength");
-    /// optionsMenu.AddToggle("Play sounds", playSounds);
-    /// </code>
-    /// </para>
-    /// </example>
     public class OptionsMenu
     {
         private static bool isReady = false;
@@ -35,7 +24,6 @@ namespace ModManager.UI
         /// <summary>
         /// Sets up the main Mods menu in the pause screen.
         /// </summary>
-        ///
         /// <param name="mainButtons">The container for the pause menu buttons.</param>
         internal static void Initialize(Transform mainButtons)
         {

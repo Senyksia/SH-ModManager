@@ -14,8 +14,8 @@
 ## Features
 
 - **Drop-in:**&nbsp;&nbsp;drag the .dll into your plugins folder, and that's it!
-- **Automatic mod detection:**&nbsp;&nbsp;enable/disable any installed mod, without needing setup from the developer
-- **Settings API:**&nbsp;&nbsp;mod developers can register for their own options menu
+- **Automatic mod detection:**&nbsp;&nbsp;enable/disable any installed mod, without needing setup from the developer.
+- **Settings API:**&nbsp;&nbsp;mod developers can register for their own options menu~
 - **In-game UI**:&nbsp;&nbsp;change settings via the in-game UI, without having to search through `every.single.config.file.cfg`
 - [ ] **Online support:**&nbsp;&nbsp;(Planned!)
 
@@ -47,7 +47,26 @@
 
 1. **Add a reference to ModManager.dll**
 
-2. **Specify ModManager as a dependency**
+   Either via NuGet
+   ```xml
+   <ItemGroup>
+     <PackageReference Include="Senyksia.SpiderHeck.ModManager" Version="0.1.*" />
+   </ItemGroup>
+   ```
+   Or by including the .dll manually
+   ```xml
+   <ItemGroup>
+     <Reference Include="ModManager" />
+   </ItemGroup>
+   ```
+
+2. **Flag ModManager as a dependency**
+
+   ```cs
+   [BepInDependency("senyksia.spiderheck.modmanager", BepInDependency.DependencyFlags.HardDependency)]
+   // ...
+   internal class MyPlugin : BaseUnityPlugin
+   ```
 
 ### Example
 
@@ -72,7 +91,7 @@ using ModManager.UI;
 
 namespace HugeSpiders
 {
-    [BepInDependency("senyksia.spiderheck.modmanager")]
+    [BepInDependency("senyksia.spiderheck.modmanager", BepInDependency.DependencyFlags.HardDependency)]
     [BepInPlugin("senyksia.spiderheck.hugespiders", "HugeSpiders", "1.0.0")]
     [BepInProcess("SpiderHeckApp.exe")]
     internal class HugeSpiders : BaseUnityPlugin
@@ -109,11 +128,12 @@ namespace HugeSpiders
 
    Create a file called `ModManager.csproj.user` next to `ModManager.csproj`.
    ```xml
+   <?xml version="1.0" encoding="utf-8"?>
    <Project>
      <PropertyGroup>
        <GameFolder>path\to\SpiderHeck</GameFolder>                                              <!-- User-defined absolute path to SpiderHeck -->
        <ReferencePath>$(ReferencePath);$(GameFolder)\SpiderHeckApp_Data\Managed</ReferencePath> <!-- Path to the SH game assemblies -->
-       <AssemblySearchPaths>$(AssemblySearchPaths);$(ReferencePath)</AssemblySearchPaths>       <!-- Add our path to the search list -->
+       <AssemblySearchPaths>$(AssemblySearchPaths);$(ReferencePath)</AssemblySearchPaths>       <!-- Add that path to the assembly search list -->
      </PropertyGroup>
    </Project>
    ```
