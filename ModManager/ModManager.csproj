@@ -25,16 +25,12 @@
     <Reference Include="MyScriptAssembly" />
     <Reference Include="DoozyEngine" />
     <Reference Include="Unity.TextMeshPro" />
-    <Reference Include="UnityEngine" />
-    <Reference Include="UnityEngine.CoreModule" />
-    <Reference Include="UnityEngine.TextRenderingModule" />
     <Reference Include="UnityEngine.UI" />
-    <Reference Include="UnityEngine.UIModule" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BepInEx.Unity" Version="6.0.0-pre.1" />
-    <PackageReference Include="UnityEngine" Version="*" ExcludeAssets="all" /> <!-- Hack to prevent consuming BepInEx.Unity's UnityEngine dependency -->
+    <PackageReference Include="UnityEngine.Modules" Version="2020.3.36" PrivateAssets="all" />
   </ItemGroup>
 
   <Target Name="CopyToPluginsFolder" AfterTargets="Build" Condition="'$(GameFolder)' != '' And '$(GameFolder)' != 'path\to\SpiderHeck'">
